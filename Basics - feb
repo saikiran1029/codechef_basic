@@ -5,3 +5,12 @@ if date == 25:
     print("CHRISTMAS")
 else:
     print("ORDINARY")
+
+10/02/26 - The Ides of March
+
+date=int(input())
+if date==15:
+    print("yes")
+else:
+    print("no")
+    
