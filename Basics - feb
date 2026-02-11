@@ -14,3 +14,12 @@ if date==15:
 else:
     print("no")
     
+11/02/26 - Good Turn
+
+t = int(input())
+for i in range(0,t):
+    x,y = map(int,input().split())
+    if x+y>6:
+        print("yes")
+    else:
+        print("no")
