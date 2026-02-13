@@ -39,3 +39,5 @@ if days>=7:
     print("yes")
 else:
     print("no")
+
+
