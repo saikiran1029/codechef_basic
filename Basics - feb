@@ -31,3 +31,11 @@ if degrees > 35:
     print("yes")
 else:
     print("no")
+
+13/02/26 - Chef and Parole
+
+days=int(input())
+if days>=7:
+    print("yes")
+else:
+    print("no")
