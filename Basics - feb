@@ -40,4 +40,11 @@ if days>=7:
 else:
     print("no")
 
+14/02/26 - Advitiya
+
+date=int(input())
+if date==16 or date==17 or date==18:
+    print("ADVITIYA")
+else:
+    print("WAITING FOR ADVITIYA")
 
