@@ -47,3 +47,11 @@ if date==16 or date==17 or date==18:
     print("ADVITIYA")
 else:
     print("WAITING FOR ADVITIYA")
+
+16/02/26-AC Please
+
+t=int(input())
+if t>30:
+    print("yes")
+else:
+    print("no")
