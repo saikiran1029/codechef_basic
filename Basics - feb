@@ -56,4 +56,14 @@ if t>30:
 else:
     print("no")
 
+17/02/26 - Healthy Sleep
+
+h = int(input())
+if h<8:
+    print("LESS")
+elif h==8:
+    print("PERFECT")
+else:
+    print("MORE")
+
 
