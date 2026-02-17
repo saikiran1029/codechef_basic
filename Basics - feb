@@ -67,3 +67,9 @@ else:
     print("MORE")
 
 18/02/26 - Gold Coins 101
+
+A,B,X,Y=map(int,input().split())
+if X>Y:
+    print(A)
+else:
+    print(B)
