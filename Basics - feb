@@ -86,4 +86,11 @@ for i in range(T):
 
 20/02/26 - Practice makes us perfect
 
+p=list(map(int,input().split()))
+weeks=0
+for problems in p:
+    if problems>=10:
+        weeks+=1
+print(weeks)
+
 
