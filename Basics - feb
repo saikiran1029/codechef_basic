@@ -48,7 +48,7 @@ if date==16 or date==17 or date==18:
 else:
     print("WAITING FOR ADVITIYA")
 
-16/02/26-AC Please
+15/02/26-AC Please
 
 t=int(input())
 if t>30:
@@ -56,7 +56,7 @@ if t>30:
 else:
     print("no")
 
-17/02/26 - Healthy Sleep
+16/02/26 - Healthy Sleep
 
 h = int(input())
 if h<8:
@@ -66,7 +66,7 @@ elif h==8:
 else:
     print("MORE")
 
-18/02/26 - Gold Coins 101
+17/02/26 - Gold Coins 101
 
 A,B,X,Y=map(int,input().split())
 if X>Y:
@@ -74,7 +74,7 @@ if X>Y:
 else:
     print(B)
 
-19/02/2026 - Masterchef finals
+18/02/2026 - Masterchef finals
 
 T=int(input())
 for i in range(T):
@@ -84,7 +84,7 @@ for i in range(T):
     else:
         print("NO")
 
-20/02/26 - Practice makes us perfect
+19/02/26 - Practice makes us perfect
 
 p=list(map(int,input().split()))
 weeks=0
@@ -93,7 +93,7 @@ for problems in p:
         weeks+=1
 print(weeks)
 
-21/02/26 - Chef and Close Friends
+20/02/26 - Chef and Close Friends
 
 import sys
 def solve():
