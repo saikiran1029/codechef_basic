@@ -95,4 +95,21 @@ print(weeks)
 
 21/02/26 - Chef and Close Friends
 
+import sys
+def solve():
+    data=sys.stdin.read().split()
+    if not data:
+        return
+    t=int(data[0])
+    pointer=1
+    for i in range(t):
+        x=int(data[pointer])
+        y=int(data[pointer + 1])
+        z=int(data[pointer + 2])
+        pointer +=3
+        ans=2*min(y,z)
+        print(ans)
+if __name__ =="__main__": 
+   solve()
+
 
