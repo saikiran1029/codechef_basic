@@ -120,4 +120,32 @@ for i in range(t):
     n=int(input())
     print(math.factorial(n))
 
+22/01/2026 - Airport Management
+
+# cook your dish here
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for i in range(t):
+        n = int(sys.stdin.readline().strip())
+        arrivals = list(map(int, sys.stdin.readline().split()))
+        departures = list(map(int, sys.stdin.readline().split()))
+        time_counts = {}
+        for time in arrivals:
+            time_counts[time] = time_counts.get(time, 0) + 1
+        for time in departures:
+            time_counts[time] = time_counts.get(time, 0) + 1
+        print(max(time_counts.values()))
+
+if __name__ == "__main__":
+    solve()
+
 
