@@ -177,6 +177,33 @@ def solve():
 if __name__ == "__main__":
     solve()
 
+24/02/2026 - Chef and digits of a number
+
+import sys
+
+def solve():
+
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+    for _ in range(t):
+        d = sys.stdin.readline().strip()
+        if not d:
+            continue
+        count0 = d.count('0')
+        count1 = d.count('1')
+        if count0 == 1 or count1 == 1:
+            print("Yes")
+        else:
+            print("No")
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
