@@ -204,7 +204,37 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-25/02/2026 - 
+25/02/2026 - Name Reduction
+
+import sys
+from collections import Counter
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    ptr = 0
+    t = int(input_data[ptr])
+    ptr += 1
+    results = []
+    for _ in range(t):
+        parent_combined = input_data[ptr] + input_data[ptr+1]
+        ptr += 2
+        n = int(input_data[ptr])
+        ptr += 1
+        children_combined = "".join(input_data[ptr : ptr + n])
+        ptr += n
+        parent_counts = Counter(parent_combined)
+        children_counts = Counter(children_combined)
+        possible = True
+        for char, count in children_counts.items():
+            if parent_counts[char] < count:
+                possible = False
+                break
+        results.append("YES" if possible else "NO")
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
