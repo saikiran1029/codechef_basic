@@ -277,6 +277,33 @@ if __name__ == "__main__":
 
 27/02/2026 - Remove Element
 
+import sys
+
+def solve():
+    try:
+        line1 = sys.stdin.readline()
+        if not line1:
+            return
+        t = int(line1.strip())
+    except ValueError:
+        return
+    for _ in range(t):
+        try:
+            n, k = map(int, sys.stdin.readline().split())
+            a = list(map(int, sys.stdin.readline().split()))
+        except ValueError:
+            break
+        if n == 1:
+            print("Yes")
+            continue
+        if min(a) + max(a) <= k:
+            print("Yes")
+        else:
+            print("No")
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
