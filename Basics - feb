@@ -304,7 +304,34 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-28/02/2026 - 
+28/02/2026 - Courses in an university
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    pointer = 0
+    t = int(input_data[pointer])
+    pointer += 1
+    output = []
+    for _ in range(t):
+        n = int(input_data[pointer])
+        pointer += 1
+        max_prereqs = 0
+        for _ in range(n):
+            val = int(input_data[pointer])
+            if val > max_prereqs:
+                max_prereqs = val
+            pointer += 1
+        output.append(str(n - max_prereqs))
+    sys.stdout.write("\n".join(output) + "\n")
+
+if __name__ == "__main__":
+    solve()
+
+01/03/2026 - 
 
 
 
