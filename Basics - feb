@@ -370,7 +370,38 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-01/02/2026 - 
+01/02/2026 - One-XOR Deletions
+
+import sys
+from collections import Counter
+
+def solve():
+    try:
+        line1 = sys.stdin.readline()
+        if not line1:
+            return
+        t = int(line1.strip())
+    except ValueError:y
+        return
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        a = list(map(int, sys.stdin.readline().split())) 
+        counts = Counter(a)
+        
+        max_kept = 0
+        for val in counts:
+            partner = val ^ 1
+            current_subset_size = counts[val] + counts.get(partner, 0)
+            
+            if current_subset_size > max_kept:
+                max_kept = current_subset_size
+        
+        # Minimum deletions = Total elements - Maximum elements we can keep
+        print(n - max_kept)
+
+if __name__ == "__main__":
+    solve()
 
 
 
