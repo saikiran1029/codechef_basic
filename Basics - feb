@@ -403,7 +403,43 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-02/03/2026 -
+02/03/2026 - Counting Inversions Revisited
+
+import sys
+
+def solve():
+    input = sys.stdin.read().split()
+    if not input:
+        return
+    
+    ptr = 0
+    t = int(input[ptr])
+    ptr += 1
+    
+    results = []
+    for _ in range(t):
+        n = int(input[ptr])
+        k = int(input[ptr+1])
+        ptr += 2
+        
+        a = list(map(int, input[ptr:ptr+n]))
+        ptr += n
+        
+        c1 = 0 # Pairs (i, j) with i < j and a[i] > a[j]
+        c2 = 0 # Pairs (i, j) with a[i] > a[j] (for all i, j)
+        for i in range(n):
+            for j in range(n):
+                if a[i] > a[j]:
+                    c2 += 1
+                    if i < j:
+                        c1 += 1
+        ans = (c1 * k) + (c2 * (k * (k - 1) // 2))
+        results.append(str(ans))
+    
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
