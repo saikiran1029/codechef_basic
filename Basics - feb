@@ -441,7 +441,50 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-04/03/2026 - 
+04/03/2026 - Fit to Play
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    it = iter(input_data)
+    
+    try:
+        t = int(next(it)) 
+    except StopIteration:
+        return
+    
+    results = []
+    
+    for _ in range(t):
+        n = int(next(it)) 
+        
+        if n < 2:
+            if n == 1: next(it) 
+            results.append("UNFIT")
+            continue
+        min_score = int(next(it))
+        max_improvement = 0
+        for _ in range(n - 1):
+            current_score = int(next(it))
+            
+            if current_score > min_score:
+                improvement = current_score - min_score
+                if improvement > max_improvement:
+                    max_improvement = improvement
+            elif current_score < min_score:
+                min_score = current_score
+        if max_improvement > 0:
+            results.append(str(max_improvement))
+        else:
+            results.append("UNFIT")
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
