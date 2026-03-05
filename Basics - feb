@@ -486,7 +486,7 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-05/03/2026 - Counting Inversions Revisited
+05/03/2026 - Trick Or Treat
 
 import sys
 
@@ -495,32 +495,33 @@ def solve():
     if not input_data:
         return
     
-    idx = 0
-    t = int(input_data[idx])
-    idx += 1
+    ptr = 0
+    t = int(input_data[ptr])
+    ptr += 1
     
     results = []
     for _ in range(t):
-        n = int(input_data[idx])
-        k = int(input_data[idx+1])
-        idx += 2
-        a = [int(input_data[idx + i]) for i in range(n)]
-        idx += n
-        
-        inv_a = 0
-        total_greater = 0
+        n = int(input_data[ptr])
+        m = int(input_data[ptr+1])
+        ptr += 2
+        a_remainders = {}
         for i in range(n):
-            for j in range(n):
-                if a[i] > a[j]:
-                    total_greater += 1
-                    if i < j:
-                        inv_a += 1
-        ans = (k * inv_a) + (k * (k - 1) // 2 * total_greater)
-        results.append(str(ans))
+            val = int(input_data[ptr]) % m
+            a_remainders[val] = a_remainders.get(val, 0) + 1
+            ptr += 1
+        total_ways = 0
+        for i in range(n):
+            val = int(input_data[ptr]) % m
+            ptr += 1
+            target = 0 if val == 0 else m - val
+            
+            if target in a_remainders:
+                total_ways += a_remainders[target]
+        
+        results.append(str(total_ways))
     sys.stdout.write("\n".join(results) + "\n")
 
 if __name__ == "__main__":
     solve()
-
 
 
