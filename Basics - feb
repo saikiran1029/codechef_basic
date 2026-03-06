@@ -524,5 +524,41 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-6/03/26 - 
+6/03/26 - Parallel Processing
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    idx = 0
+    t = int(input_data[idx])
+    idx += 1
+    
+    results = []
+    for _ in range(t):
+        n = int(input_data[idx])
+        idx += 1
+        a = list(map(int, input_data[idx : idx + n]))
+        idx += n
+        
+        total_sum = sum(a)
+        prefix_sum = 0
+        min_time = total_sum 
+        
+        for x in a:
+            prefix_sum += x
+            suffix_sum = total_sum - prefix_sum
+            current_max = max(prefix_sum, suffix_sum)
+            if current_max < min_time:
+                min_time = current_max
+            if prefix_sum >= suffix_sum:
+                break
+        results.append(str(min_time))
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
