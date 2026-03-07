@@ -562,3 +562,33 @@ def solve():
 if __name__ == "__main__":
     solve()
 
+7/03/26 - Chef and Walking on the rectangle
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        try:
+            n, m, k = map(int, sys.stdin.readline().split())
+            if (n == 1 and m <= 2) or (n <= 2 and m == 1):
+                print(0)
+
+            elif n == 1 or m == 1:
+                print(k)
+            else:
+                print((k + 1) // 2)
+                
+        except ValueError:
+            break
+
+if __name__ == "__main__":
+    solve()
+
