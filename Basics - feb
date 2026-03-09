@@ -627,6 +627,45 @@ if __name__ == "__main__":
 
 9/03/26 - Bouncing Ball
 
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    idx = 0
+    T_str = input_data[idx]
+    T = int(T_str)
+    idx += 1
+    
+    results = []
+    for _ in range(T):
+        N = int(input_data[idx])
+        idx += 1
+        A = list(map(int, input_data[idx : idx + N]))
+        idx += N
+        
+        total_sum = sum(A)
+        left_sum = 0
+        ans = 0
+        
+        for x in A:
+            if x == 0:
+                right_sum = total_sum - left_sum
+                if left_sum == right_sum:
+                    ans += 2
+                elif abs(left_sum - right_sum) == 1:
+                    ans += 1
+            else:
+                left_sum += x
+        
+        results.append(str(ans))
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
