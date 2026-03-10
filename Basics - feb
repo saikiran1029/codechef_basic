@@ -666,7 +666,39 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-10/02/26 - 
+10/02/26 - Fast Food
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    ptr = 0
+    t = int(input_data[ptr])
+    ptr += 1
+    
+    results = []
+    for _ in range(t):
+        n = int(input_data[ptr])
+        ptr += 1
+        a = list(map(int, input_data[ptr : ptr + n]))
+        ptr += n
+        b = list(map(int, input_data[ptr : ptr + n]))
+        ptr += n
+        current_profit = sum(b)
+        max_profit = current_profit
+        for i in range(n):
+            current_profit += (a[i] - b[i])
+            if current_profit > max_profit:
+                max_profit = current_profit
+                
+        results.append(str(max_profit))
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
