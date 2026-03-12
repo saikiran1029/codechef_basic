@@ -734,6 +734,55 @@ def solve():
 if __name__ == "__main__":
     solve()
 
+12/02/26 - Sums in a cuboid
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    idx = 0
+    t = int(input_data[idx])
+    idx += 1
+    
+    for _ in range(t):
+        x = int(input_data[idx])
+        y = int(input_data[idx+1])
+        z = int(input_data[idx+2])
+        idx += 3
+        
+        B = [[[0 for _ in range(z)] for _ in range(y)] for _ in range(x)]
+        
+        for i in range(x):
+            for j in range(y):
+                for k in range(z):
+                    B[i][j][k] = int(input_data[idx])
+                    idx += 1
+        
+        for i in range(x):
+            results_row_group = []
+            for j in range(y):
+                results_k = []
+                for k in range(z):
+                    val = B[i][j][k]
+                    
+                    if i > 0: val -= B[i-1][j][k]
+                    if j > 0: val -= B[i][j-1][k]
+                    if k > 0: val -= B[i][j][k-1]
+                    
+                    if i > 0 and j > 0: val += B[i-1][j-1][k]
+                    if i > 0 and k > 0: val += B[i-1][j][k-1]
+                    if j > 0 and k > 0: val += B[i][j-1][k-1]
+                    
+                    if i > 0 and j > 0 and k > 0: val -= B[i-1][j-1][k-1]
+                    
+                    results_k.append(str(val))
+                print(" ".join(results_k))
+
+if __name__ == "__main__":
+    solve()
 
 
 
