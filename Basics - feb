@@ -810,7 +810,43 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-14/03/26 - 
+14/03/26 - Smallest KMP
+
+def solve():
+    s = input().strip()
+    p = input().strip()
+    freq = {}
+    for char in s:
+        freq[char] = freq.get(char, 0) + 1
+    for char in p:
+        freq[char] -= 1
+    rem_chars = sorted(freq.keys())
+    
+    res_before = ""
+    res_after = ""
+    
+    p_start = p[0]
+    for char in range(ord('a'), ord('z') + 1):
+        c = chr(char)
+        count = freq.get(c, 0)
+        
+        if c < p_start:
+            res_before += c * count
+        elif c > p_start:
+            res_after += c * count
+        else:
+            opt1 = p + (c * count)
+            opt2 = (c * count) + p
+            if opt1 < opt2:
+                res_before += opt1
+            else:
+                res_before += opt2
+
+    print(res_before + res_after)
+
+t = int(input())
+for _ in range(t):
+    solve()
 
 
 
