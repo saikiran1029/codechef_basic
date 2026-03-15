@@ -848,6 +848,56 @@ t = int(input())
 for _ in range(t):
     solve()
 
+15/02/26 - Bench Press
+
+import sys
+
+def solve():
+    try:
+        input_data = sys.stdin.read().split()
+        if not input_data:
+            return
+        
+        idx = 0
+        T = int(input_data[idx])
+        idx += 1
+        
+        results = []
+        for _ in range(T):
+            N = int(input_data[idx])
+            W = int(input_data[idx+1])
+            Wr = int(input_data[idx+2])
+            idx += 3
+            
+            weights = input_data[idx:idx+N]
+            idx += N
+            if Wr >= W:
+                results.append("YES")
+                continue
+            counts = {}
+            for w in weights:
+                w_int = int(w)
+                counts[w_int] = counts.get(w_int, 0) + 1
+            
+            total_weight = Wr
+            for weight_val, count in counts.items():
+                num_pairs = count // 2
+                total_weight += num_pairs * 2 * weight_val
+                if total_weight >= W:
+                    break
+            
+            if total_weight >= W:
+                results.append("YES")
+            else:
+                results.append("NO")
+        sys.stdout.write("\n".join(results) + "\n")
+        
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
