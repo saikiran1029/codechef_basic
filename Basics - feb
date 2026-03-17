@@ -954,7 +954,66 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-17/03/26 - 
+17/03/26 - Dish Of Life
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    ptr = 0
+    t = int(input_data[ptr])
+    ptr += 1
+    
+    results = []
+    
+    for _ in range(t):
+        n = int(input_data[ptr])
+        k = int(input_data[ptr + 1])
+        ptr += 2
+        ingredient_counts = [0] * (k + 1)
+        islands = []
+        
+        for _ in range(n):
+            p = int(input_data[ptr])
+            ptr += 1
+            current_island_ingredients = []
+            for _ in range(p):
+                ing = int(input_data[ptr])
+                ingredient_counts[ing] += 1
+                current_island_ingredients.append(ing)
+                ptr += 1
+            islands.append(current_island_ingredients)
+        possible = True
+        for i in range(1, k + 1):
+            if ingredient_counts[i] == 0:
+                possible = False
+                break
+        
+        if not possible:
+            results.append("sad")
+            continue
+        can_skip = False
+        for island in islands:
+            redundant = True
+            for ing in island:
+                if ingredient_counts[ing] == 1:
+                    redundant = False
+                    break
+            if redundant:
+                can_skip = True
+                break
+        
+        if can_skip:
+            results.append("some")
+        else:
+            results.append("all")
+    print('\n'.join(results))
+
+if __name__ == "__main__":
+    solve()
 
 
 
