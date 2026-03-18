@@ -1015,7 +1015,52 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-18/03/26 - 
+18/03/26 - Mystical Numbers
+
+# cook your dish here
+import sys
+from bisect import bisect_left, bisect_right
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    ptr = 0
+    t = int(input_data[ptr])
+    ptr += 1
+    
+    results = []
+    
+    for _ in range(t):
+        n = int(input_data[ptr])
+        ptr += 1
+        indices_by_bitlen = [[] for _ in range(35)]
+        
+        for i in range(1, n + 1):
+            val = int(input_data[ptr])
+            ptr += 1
+            b_len = val.bit_length()
+            indices_by_bitlen[b_len].append(i)
+            
+        q = int(input_data[ptr])
+        ptr += 1
+        
+        for _ in range(q):
+            l = int(input_data[ptr])
+            r = int(input_data[ptr+1])
+            x = int(input_data[ptr+2])
+            ptr += 3
+            
+            target_len = x.bit_length()
+            target_list = indices_by_bitlen[target_len]
+            count_non_mystical = bisect_right(target_list, r) - bisect_left(target_list, l)
+            total_elements = r - l + 1
+            results.append(str(total_elements - count_non_mystical))
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
