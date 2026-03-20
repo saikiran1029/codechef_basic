@@ -1121,7 +1121,60 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-20/03/26 - 
+20/03/26 - Maximum Subarray
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    ptr = 0
+    t = int(input_data[ptr])
+    ptr += 1
+    
+    results = []
+    for _ in range(t):
+        n = int(input_data[ptr])
+        ptr += 1
+        a = [int(input_data[ptr + i]) for i in range(n)]
+        ptr += n
+        
+        m = int(input_data[ptr])
+        ptr += 1
+        b = [int(input_data[ptr + i]) for i in range(m)]
+        ptr += m
+        
+        sum_pos_b = sum(x for x in b if x > 0)
+        max_kadane = 0
+        current_sum = 0
+        for x in a:
+            current_sum += x
+            if current_sum < 0:
+                current_sum = 0
+            if current_sum > max_kadane:
+                max_kadane = current_sum
+        max_pref = 0
+        current_pref = 0
+        for x in a:
+            current_pref += x
+            if current_pref > max_pref:
+                max_pref = current_pref
+        max_suff = 0
+        current_suff = 0
+        for x in reversed(a):
+            current_suff += x
+            if current_suff > max_suff:
+                max_suff = current_suff
+        
+        ans = max(max_kadane, sum_pos_b + max_pref, sum_pos_b + max_suff)
+        results.append(str(ans))
+    
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
