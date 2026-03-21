@@ -1176,7 +1176,77 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-21/03/26 - 
+21/03/26 - Little Elephant and Order
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    T = int(input_data[0])
+    ptr = 1
+    
+    results = []
+    for _ in range(T):
+        A_str = input_data[ptr]
+        B_str = input_data[ptr + 1]
+        ptr += 2
+
+        countA = [0] * 10
+        countB = [0] * 10
+        for char in A_str:
+            countA[int(char)] += 1
+        for char in B_str:
+            countB[int(char)] += 1
+        a_mid = countA[5] + countA[6]
+        b_mid = countB[5] + countB[6]
+        a_low = countA[0] + countA[1] + countA[2] + countA[3]
+        b_low = countB[0] + countB[1] + countB[2] + countB[3]
+        
+        a4, a7 = countA[4], countA[7]
+        b4, b7 = countB[4], countB[7]
+        
+        res7 = 0
+        take = min(a7, b_mid)
+        res7 += take; a7 -= take; b_mid -= take
+        
+        take = min(a7, b_low)
+        res7 += take; a7 -= take; b_low -= take
+        
+        take = min(b7, a_mid)
+        res7 += take; b7 -= take; a_mid -= take
+        
+        take = min(b7, a_low)
+        res7 += take; b7 -= take; a_low -= take
+        
+        take = min(a7, b4)
+        res7 += take; a7 -= take; b4 -= take
+        
+        take = min(b7, a4)
+        res7 += take; b7 -= take; a4 -= take
+        
+        take = min(a7, b7)
+        res7 += take; a7 -= take; b7 -= take
+        
+        res4 = 0
+
+        take = min(a4, b_low)
+        res4 += take; a4 -= take; b_low -= take
+        
+        take = min(b4, a_low)
+        res4 += take; b4 -= take; a_low -= take
+        
+        take = min(a4, b4)
+        res4 += take; a4 -= take; b4 -= take
+        
+        results.append("7" * res7 + "4" * res4)
+        
+    print("\n".join(results))
+
+if __name__ == "__main__":
+    solve()
 
 
 
