@@ -1248,7 +1248,43 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-22/03/26 - 
+22/03/26 - Chef and Digits
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    n = int(input_data[0])
+    m = int(input_data[1])
+    s = input_data[2] 
+    
+    freq = [0] * 10
+    results = [0] * n
+    
+    for i in range(n):
+        current_digit = int(s[i])
+        
+        current_sum = 0
+        for d in range(10):
+            if freq[d] > 0:
+                current_sum += abs(current_digit - d) * freq[d]
+        
+        results[i] = current_sum
+        
+        freq[current_digit] += 1
+    
+    query_outputs = []
+    for k in range(m):
+
+        x = int(input_data[3 + k])
+        query_outputs.append(str(results[x - 1]))
+    sys.stdout.write("\n".join(query_outputs) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
