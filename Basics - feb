@@ -1286,7 +1286,22 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-23/03/26 - 
+23/03/26 - Wordle
+
+# cook your dish here
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+    t_word = input().strip()
+    
+    m = ""
+    for i in range(5):
+        if s[i] == t_word[i]:
+            m += "G"
+        else:
+            m += "B"
+    print(m)
 
 
 
