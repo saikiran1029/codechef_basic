@@ -1303,7 +1303,44 @@ for _ in range(t):
             m += "B"
     print(m)
 
-24/03/26 - 
+24/03/26 - Easy Pronunciation
+
+import sys
+
+def solve():
+    try:
+        t_str = sys.stdin.readline().strip()
+        if not t_str:
+            return
+        t = int(t_str)
+    except ValueError:
+        return
+
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        s = sys.stdin.readline().strip()
+
+        consecutive_count = 0
+        is_hard = False
+
+        for char in s:
+            if char not in vowels:
+                consecutive_count += 1
+                if consecutive_count >= 4:
+                    is_hard = True
+                    break
+            else:
+                consecutive_count = 0
+        
+        if is_hard:
+            print("NO")
+        else:
+            print("YES")
+
+if __name__ == "__main__":
+    solve()
 
 
 
