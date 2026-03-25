@@ -1342,7 +1342,53 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-25/03/26 - 
+25/03/26 - Palindrome Pain
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    t = int(input_data[0])
+    idx = 1
+    results = []
+    
+    for _ in range(t):
+        x = int(input_data[idx])
+        y = int(input_data[idx+1])
+        idx += 2
+        
+        if (x % 2 != 0 and y % 2 != 0) or x == 1 or y == 1:
+            results.append("-1")
+            continue
+        
+        if x % 2 == 0 and y % 2 == 0:
+            s1 = 'a' * (x // 2) + 'b' * y + 'a' * (x // 2)
+            s2 = 'b' * (y // 2) + 'a' * x + 'b' * (y // 2)
+            results.append(f"{s1}\n{s2}")
+            
+        elif x % 2 != 0:
+            half_a = 'a' * (x // 2)
+            half_b = 'b' * (y // 2)
+            
+            s1 = half_a + half_b + 'a' + half_b + half_a
+            s2 = half_b + half_a + 'a' + half_a + half_b
+            results.append(f"{s1}\n{s2}")
+            
+        else:
+            half_a = 'a' * (x // 2)
+            half_b = 'b' * (y // 2)
+            
+            s1 = half_b + half_a + 'b' + half_a + half_b
+            s2 = half_a + half_b + 'b' + half_b + half_a
+            results.append(f"{s1}\n{s2}")
+
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
