@@ -1390,7 +1390,33 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-26/03/26 - 
+26/03/26 - Black And White Cells
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        s = sys.stdin.readline().strip()
+        if not s:
+            continue
+        w_index = s.find('W')
+        left_count = w_index
+        right_count = len(s) - 1 - w_index
+        if left_count == right_count:
+            print("Chef")
+        else:
+            print("Aleksa")
+
+if __name__ == "__main__":
+    solve()
 
 
 
