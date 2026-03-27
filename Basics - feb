@@ -1418,6 +1418,53 @@ def solve():
 if __name__ == "__main__":
     solve()
 
+27/03/26 - Recipe Reconstruction
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    t = int(input_data[0])
+    MOD = 10000009
+    results = []
+    
+    current_idx = 1
+    for _ in range(t):
+        s = input_data[current_idx]
+        current_idx += 1
+        n = len(s)
+        ans = 1
+
+        for i in range((n + 1) // 2):
+            left = i
+            right = n - 1 - i
+            
+            char_l = s[left]
+            char_r = s[right]
+            
+            if left == right:
+                if char_l == '?':
+                    ans = (ans * 26) % MOD
+            else:
+                if char_l == '?' and char_r == '?':
+                    ans = (ans * 26) % MOD
+
+                elif char_l != '?' and char_r != '?':
+                    if char_l != char_r:
+                        ans = 0 
+                        break
+                else:
+                    continue
+        
+        results.append(str(ans))
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
