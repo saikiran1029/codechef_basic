@@ -93,6 +93,9 @@ for problems in p:
         weeks+=1
 print(weeks)
 
+
+
+                                                                                                ARRAY
 20/02/26 - Chef and Close Friends
 
 import sys
@@ -1017,7 +1020,6 @@ if __name__ == "__main__":
 
 18/03/26 - Mystical Numbers
 
-# cook your dish here
 import sys
 from bisect import bisect_left, bisect_right
 
@@ -1286,9 +1288,9 @@ def solve():
 if __name__ == "__main__":
     solve()
 
+                                                                                  STRING
 23/03/26 - Wordle
 
-# cook your dish here
 t = int(input())
 
 for _ in range(t):
