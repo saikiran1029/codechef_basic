@@ -1514,7 +1514,68 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-29/03/26 - 
+29/03/26 - Penalty Shoot-out
+
+import sys
+
+def solve():
+    for line in sys.stdin:
+        s = line.strip()
+        if not s:
+            continue
+        
+        score1 = 0
+        score2 = 0
+        rem1 = 5
+        rem2 = 5
+        winner = None
+        shots_taken = 0
+        
+        for i in range(10):
+            shots_taken += 1
+            if i % 2 == 0:  
+                if s[i] == '1':
+                    score1 += 1
+                rem1 -= 1
+            else:           
+                if s[i] == '1':
+                    score2 += 1
+                rem2 -= 1
+            
+            if score1 > score2 + rem2:
+                winner = "TEAM-A"
+                break
+            if score2 > score1 + rem1:
+                winner = "TEAM-B"
+                break
+        
+        if winner:
+            print(f"{winner} {shots_taken}")
+            continue
+
+        if score1 == score2:
+            for i in range(10, 20, 2):
+                # Both teams take one shot each in a pair
+                if s[i] == '1':
+                    score1 += 1
+                if s[i+1] == '1':
+                    score2 += 1
+                
+                shots_taken += 2
+                if score1 > score2:
+                    winner = "TEAM-A"
+                    break
+                elif score2 > score1:
+                    winner = "TEAM-B"
+                    break
+        
+        if winner:
+            print(f"{winner} {shots_taken}")
+        else:
+            print("TIE")
+
+if __name__ == "__main__":
+    solve()
 
 
 
