@@ -1618,7 +1618,51 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-31/03/26 - 
+31/03/26 - Marbles
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        s = sys.stdin.readline().strip()
+        p = sys.stdin.readline().strip()
+
+        min_total_ops = float('inf')
+        for char_code in range(ord('a'), ord('z') + 1):
+            replacement_char = chr(char_code)
+            current_ops = 0
+            
+            for i in range(n):
+                s_char = replacement_char if s[i] == '?' else s[i]
+                p_char = replacement_char if p[i] == '?' else p[i]
+
+                if s_char == p_char:
+                    continue
+                s_is_vowel = s_char in vowels
+                p_is_vowel = p_char in vowels
+
+                if s_is_vowel != p_is_vowel:
+                    current_ops += 1
+                else:
+                    current_ops += 2
+            
+            min_total_ops = min(min_total_ops, current_ops)
+        
+        print(min_total_ops)
+
+if __name__ == "__main__":
+    solve()
 
 
 
