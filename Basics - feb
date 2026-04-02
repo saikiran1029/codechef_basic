@@ -1704,7 +1704,62 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-2/03/26  - 
+2/03/26  - Chef Hates Palindromes
+
+import sys
+
+def solve():
+    try:
+        line1 = sys.stdin.readline()
+        if not line1:
+            return
+        t = int(line1.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        try:
+            line = sys.stdin.readline().split()
+            if not line:
+                break
+            n, a = map(int, line)
+        except ValueError:
+            break
+
+        if a == 1:
+            print(f"{n} {'a' * n}")
+        
+        elif a >= 3:
+            res = ""
+            chars = "abc"
+            for i in range(n):
+                res += chars[i % 3]
+            print(f"1 {res}")
+            
+        else:
+            if n == 1:
+                print("1 a")
+            elif n == 2:
+                print("1 ab")
+            elif n == 3:
+                print("2 aab")
+            elif n == 4:
+                print("2 aabb")
+            elif n == 5:
+                print("3 aaabb")
+            elif n == 6:
+                print("3 aaabbb")
+            elif n == 7:
+                print("3 aaababb")
+            elif n == 8:
+                print("3 aaababbb")
+            else:
+                pattern = "aababb"
+                res = (pattern * (n // 6 + 1))[:n]
+                print(f"4 {res}")
+
+if __name__ == "__main__":
+    solve()
 
 
 
