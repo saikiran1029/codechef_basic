@@ -1761,7 +1761,49 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-3/04/26 - 
+3/04/26 - Fibonacci String
+
+import sys
+from collections import Counter
+
+def is_fibonacci_sequence(freqs):
+    """Checks if the given list follows f[i] = f[i-1] + f[i-2] for i >= 2."""
+    if len(freqs) < 3:
+        return True
+    for i in range(2, len(freqs)):
+        if freqs[i] != freqs[i-1] + freqs[i-2]:
+            return False
+    return True
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    T = int(input_data[0])
+    ptr = 1
+    
+    for _ in range(T):
+        S = input_data[ptr]
+        ptr += 1
+        
+        counts = Counter(S)
+        freq_vals = sorted(counts.values())
+        
+        if is_fibonacci_sequence(freq_vals):
+            print("Dynamic")
+        else:
+            if len(freq_vals) >= 3:
+                freq_vals[0], freq_vals[1] = freq_vals[1], freq_vals[0]
+                if is_fibonacci_sequence(freq_vals):
+                    print("Dynamic")
+                else:
+                    print("Not")
+            else:
+                print("Not")
+
+if __name__ == "__main__":
+    solve()
 
 
 
