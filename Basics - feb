@@ -1805,7 +1805,57 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-4/4/26 - 
+4/4/26 - Vowel Anxiety
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    t = int(input_data[0])
+    idx = 1
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    
+    results = []
+    for _ in range(t):
+        n = int(input_data[idx])
+        s = input_data[idx + 1]
+        idx += 2
+
+        segments = []
+        last_pos = 0
+        for i in range(n):
+            if s[i] in vowels:
+                segments.append(s[last_pos:i])
+                last_pos = i
+        segments.append(s[last_pos:]) 
+        
+        k = len(segments) - 1 
+        
+        left_parts = []
+        right_parts = []
+
+        if k % 2 == 0:
+
+            for i in range(k - 1, 0, -2):
+                left_parts.append(segments[i][::-1])
+            for i in range(0, k, 2):
+                right_parts.append(segments[i])
+        else:
+            for i in range(k - 1, -1, -2):
+                left_parts.append(segments[i][::-1])
+            for i in range(1, k, 2):
+                right_parts.append(segments[i])
+        
+        final_str = "".join(left_parts) + "".join(right_parts) + segments[k]
+        results.append(final_str)
+    
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
