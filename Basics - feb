@@ -1904,7 +1904,58 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-06/04/26 - 
+06/04/26 - Binary Mismatch
+
+import sys
+
+def solve():
+    input = sys.stdin.read().split()
+    if not input:
+        return
+    
+    idx = 0
+    t = int(input[idx])
+    idx += 1
+    
+    results = []
+    for _ in range(t):
+        n = int(input[idx])
+        s = input[idx + 1]
+        idx += 2
+
+        if n % 2 != 0:
+            results.append("NO")
+            continue
+            
+        zeros = s.count('0')
+        target_diff = (n // 2) - zeros
+
+        current_sum = 0
+        prefix_sums = {0: 0} # {sum: ending_index}
+        found = False
+        
+        for i, char in enumerate(s):
+            val = 1 if char == '1' else -1
+            current_sum += val
+
+            needed = current_sum - target_diff
+            if needed in prefix_sums:
+                l = prefix_sums[needed] + 1
+                r = i + 1
+                results.append(f"YES\n{l} {r}")
+                found = True
+                break
+
+            if current_sum not in prefix_sums:
+                prefix_sums[current_sum] = i + 1
+        
+        if not found:
+            results.append("NO")
+
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
