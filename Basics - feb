@@ -1957,7 +1957,64 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-7/04/26 - 
+7/04/26 - Devu and his Class
+
+import sys
+
+def solve():
+    try:
+        line1 = sys.stdin.readline().strip()
+        if not line1: return
+        t_type = int(line1)
+        s = sys.stdin.readline().strip()
+    except ValueError:
+        return
+
+    n = len(s)
+    nb = s.count('B')
+    ng = n - nb
+
+    if abs(nb - ng) > 1:
+        print("-1")
+        return
+
+    pos_b = [i for i, char in enumerate(s) if char == 'B']
+
+    def get_cost(start_char):
+        target_pos_b = []
+        for i in range(n):
+            if (i % 2 == 0 and start_char == 'B') or (i % 2 == 1 and start_char == 'G'):
+                target_pos_b.append(i)
+        
+        if len(target_pos_b) != nb:
+            return float('inf')
+
+        cost = 0
+        if t_type == 0:
+            misplaced = 0
+            for i in range(nb):
+                if s[target_pos_b[i]] != 'B':
+                    misplaced += 1
+            cost = misplaced
+        else:
+
+            for i in range(nb):
+                cost += abs(pos_b[i] - target_pos_b[i])
+        return cost
+
+    ans = float('inf')
+    if nb >= ng:
+        ans = min(ans, get_cost('B'))
+    if ng >= nb:
+        ans = min(ans, get_cost('G'))
+
+    print(ans)
+
+line = sys.stdin.readline().strip()
+if line:
+    T_cases = int(line)
+    for _ in range(T_cases):
+        solve()
 
 
 
