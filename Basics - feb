@@ -2016,7 +2016,55 @@ if line:
     for _ in range(T_cases):
         solve()
 
-08/04/26 - 
+08/04/26 - Chef and Secret Password
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    t = int(input_data[0])
+    current_idx = 1
+    
+    results = []
+    for _ in range(t):
+        if current_idx >= len(input_data):
+            break
+            
+        n = int(input_data[current_idx])
+        s = input_data[current_idx + 1]
+        current_idx += 2
+        
+        first_char = s[0]
+        occurrences = [i for i, char in enumerate(s) if char == first_char]
+        match_len = 0
+        while True:
+            if match_len >= n:
+                break
+
+            char_to_match = s[match_len]
+            is_valid = True
+            
+            for start_pos in occurrences:
+
+                if (start_pos + match_len >= n) or (s[start_pos + match_len] != char_to_match):
+                    is_valid = False
+                    break
+            
+            if is_valid:
+                match_len += 1
+            else:
+                break
+
+        results.append(s[:match_len])
+
+    if results:
+        sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
