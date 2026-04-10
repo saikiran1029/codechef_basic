@@ -2116,7 +2116,12 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-10/04/26 - 
+10/04/26 - Squid Game - Piggy Bank
+
+n, k = map(int, input().split())
+eliminated_players = n - k
+total_prize = eliminated_players * 10000
+print(total_prize)
 
 
 
