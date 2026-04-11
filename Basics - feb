@@ -2123,6 +2123,8 @@ eliminated_players = n - k
 total_prize = eliminated_players * 10000
 print(total_prize)
 
+11/04/26 - 
+
 
 
 
