@@ -2150,7 +2150,38 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-12/04/26 - 
+12/04/26 - Slow Solution
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    t_cases = int(input_data[0])
+    pointer = 1
+    
+    results = []
+    for _ in range(t_cases):
+        maxT = int(input_data[pointer])
+        maxN = int(input_data[pointer + 1])
+        sumN = int(input_data[pointer + 2])
+        pointer += 3
+
+        full_blocks = min(maxT, sumN // maxN)
+
+        remaining_val = 0
+        if full_blocks < maxT:
+            remaining_val = sumN % maxN
+
+        ans = (full_blocks * (maxN ** 2)) + (remaining_val ** 2)
+        results.append(str(ans))
+    
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
