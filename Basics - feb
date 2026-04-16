@@ -2302,7 +2302,41 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-16/04/26 - 
+16/04/26 - One Stone or Two Stones
+
+import sys
+
+def solve():
+
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        try:
+
+            x, y = map(int, sys.stdin.readline().split())
+
+            if x >= y + 2:
+                print("CHEF")
+            elif y >= x + 2:
+                print("CHEFINA")
+
+            else:
+
+                if min(x, y) % 2 == 0:
+                    print("CHEFINA")
+                else:
+                    print("CHEF")
+        except ValueError:
+            break
+
+if __name__ == "__main__":
+    solve()
 
 
 
