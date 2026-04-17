@@ -2338,7 +2338,41 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-17/04/26 - 
+17/04/26 - Chef and Bulb Invention
+
+import sys
+
+def solve():
+
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+
+        try:
+            n, p, k = map(int, sys.stdin.readline().split())
+        except ValueError:
+            break
+
+        r = p % k
+
+        rem = (n - 1) % k
+
+        q = (n - 1) // k
+
+        ans = r * q + min(r, rem + 1)
+
+        ans += (p - r) // k + 1
+        
+        print(ans)
+
+if __name__ == "__main__":
+    solve()
 
 
 
