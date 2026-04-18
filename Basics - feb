@@ -2374,7 +2374,41 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-18/04/26 - 
+18/04/26 - Average Gift
+
+import sys
+
+def solve():
+
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+
+        line1 = sys.stdin.readline().split()
+        if not line1:
+            break
+        n, x = map(int, line1)
+        
+
+        line2 = sys.stdin.readline().split()
+        if not line2:
+            break
+        s = list(map(int, line2))
+        
+
+        if min(s) <= x <= max(s):
+            print("YES")
+        else:
+            print("NO")
+
+if __name__ == "__main__":
+    solve()
 
 
 
