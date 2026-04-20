@@ -2410,7 +2410,44 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-20/0426 - 
+20/0426 - Pairwise Xors
+
+import sys
+
+def solve():
+
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    t = int(input_data[0])
+    results = []
+    
+    ptr = 1
+    for _ in range(t):
+        if ptr >= len(input_data):
+            break
+        x = int(input_data[ptr])
+        ptr += 1
+ 
+        if x % 2 != 0:
+            results.append("-1")
+            continue
+
+        b = (x // 2) & -(x // 2)
+        c = (x // 2) ^ b
+        a = 0
+
+        if b > 0 and c > 0 and b != c:
+            results.append(f"{a} {b} {c}")
+        else:
+
+            results.append("-1")
+
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
