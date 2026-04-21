@@ -2449,7 +2449,11 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-21/04/26 - 
+21/04/26 - Devouring Donuts
+
+X, Y = map(int, input().split())
+total_calories = X * Y
+print(total_calories)
 
 
 
