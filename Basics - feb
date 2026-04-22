@@ -2455,7 +2455,13 @@ X, Y = map(int, input().split())
 total_calories = X * Y
 print(total_calories)
 
-22/04/26 -
+22/04/26 - Election Hopes
+
+X, Y = map(int, input().split())
+if X >= 2 * Y:
+    print("Yes")
+else:
+    print("No")
 
 
 
