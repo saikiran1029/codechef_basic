@@ -2463,7 +2463,46 @@ if X >= 2 * Y:
 else:
     print("No")
 
-23/04/26 - 
+23/04/26 - OR Tuples
+
+import sys
+
+def solve():
+
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        p, q, r = map(int, line.split())
+    except ValueError:
+        return
+
+    ans = 1
+
+    for i in range(20):
+
+        pi = (p >> i) & 1
+        qi = (q >> i) & 1
+        ri = (r >> i) & 1
+        
+        count = 0
+
+        for a in range(2):
+            for b in range(2):
+                for c in range(2):
+                    if (a | b == pi) and (b | c == qi) and (c | a == ri):
+                        count += 1
+
+        ans *= count
+        
+    print(ans)
+
+line = sys.stdin.readline()
+if line:
+    t = int(line)
+    for _ in range(t):
+        solve()
+
 
 
 
