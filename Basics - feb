@@ -2503,6 +2503,14 @@ if line:
     for _ in range(t):
         solve()
 
+24/04/26 - Saving Taxes
+
+T = int(input())
+
+for _ in range(T):
+    X, Y = map(int, input().split())
+    print(X - Y)
+
 
 
 
