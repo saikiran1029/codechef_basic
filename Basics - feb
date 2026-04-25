@@ -2511,7 +2511,55 @@ for _ in range(T):
     X, Y = map(int, input().split())
     print(X - Y)
 
-25/04/26 - 
+25/04/26 - Beautiful Array
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        arr = list(map(int, sys.stdin.readline().split()))
+
+        if sum(arr) % 4 != 0:
+            print("-1")
+            continue
+
+        count = [0] * 4
+        for x in arr:
+            count[x % 4] += 1
+            
+        ans = 0
+
+        pair13 = min(count[1], count[3])
+        ans += pair13
+        count[1] -= pair13
+        count[3] -= pair13
+
+        ans += count[2] // 2
+        count[2] %= 2
+
+        if count[1] > 0:
+            ans += (count[1] // 4) * 3
+            count[1] %= 4
+        elif count[3] > 0:
+            ans += (count[3] // 4) * 3
+            count[3] %= 4
+
+        if count[2] == 1:
+            ans += 2
+            
+        print(ans)
+
+if __name__ == "__main__":
+    solve()
 
 
 
