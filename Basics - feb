@@ -2561,7 +2561,63 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-26/04/26 - 
+26/04/26 - Plant Location
+
+import math
+
+def solve():
+    try:
+        t_str = input().strip()
+        if not t_str: return
+        t = int(t_str)
+    except EOFError:
+        return
+
+    for _ in range(t):
+        n = int(input())
+        a, b, c = map(int, input().split())
+        warehouses = []
+        for _ in range(n):
+            warehouses.append(list(map(int, input().split())))
+
+        def get_total_dist(x, y):
+            total = 0
+            for wx, wy in warehouses:
+                total += math.sqrt((x - wx)**2 + (y - wy)**2)
+            return total
+
+        low, high = -10000, 10000 
+        
+        for i in range(100):
+            m1 = low + (high - low) / 3
+            m2 = high - (high - low) / 3
+            
+            if abs(b) > abs(a): 
+                y1 = -(a * m1 + c) / b
+                y2 = -(a * m2 + c) / b
+                dist1 = get_total_dist(m1, y1)
+                dist2 = get_total_dist(m2, y2)
+            else: 
+                x1 = -(b * m1 + c) / a
+                x2 = -(b * m2 + c) / a
+                dist1 = get_total_dist(x1, m1)
+                dist2 = get_total_dist(x2, m2)
+            
+            if dist1 < dist2:
+                high = m2
+            else:
+                low = m1
+
+        mid = (low + high) / 2
+        if abs(b) > abs(a):
+            final_dist = get_total_dist(mid, -(a * mid + c) / b)
+        else:
+            final_dist = get_total_dist(-(b * mid + c) / a, mid)
+        
+        print(f"{final_dist:.6f}")
+
+if __name__ == "__main__":
+    solve()
 
 
 
