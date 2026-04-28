@@ -2669,7 +2669,61 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-28/04/26 - 
+28/04/26 - Nil Xor
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        try:
+            n, x = map(int, sys.stdin.readline().split())
+        except ValueError:
+            break
+            
+        count = 0
+        current_k_is_less = False
+        ways = 1
+        
+        for i in range(29, -1, -1):
+            bit_n = (n >> i) & 1
+            bit_x = (x >> i) & 1
+            
+            if current_k_is_less:
+
+                if bit_x == 0:
+                    ways *= 2 
+                else:
+                    ways *= 1 
+            else:
+
+                if bit_x == 1:
+
+                    pass
+                else:
+
+                    if bit_n == 1:
+
+                        remaining_zeros = 0
+                        for j in range(i-1, -1, -1):
+                            if not ((x >> j) & 1):
+                                remaining_zeros += 1
+                        count += (1 << remaining_zeros)
+
+                    else:
+                        pass
+        
+        print(count)
+
+if __name__ == "__main__":
+    solve()
 
 
 
