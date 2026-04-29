@@ -2725,7 +2725,61 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-29/04/26 - 
+29/04/26 - c8kbf and Tree
+
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+
+def solve():
+    try:
+        line1 = input().split()
+        if not line1: return
+        n = int(line1[0])
+    except EOFError:
+        return
+
+    adj = [[] for _ in range(n + 1)]
+    for _ in range(n - 1):
+        u, v, w = map(int, input().split())
+        adj[u].append((v, w))
+        adj[v].append((u, w))
+
+    d = [-1] * (n + 1)
+    d[1] = 0
+    queue = deque([1])
+    
+    while queue:
+        u = queue.popleft()
+        for v, w in adj[u]:
+            if d[v] == -1:
+                d[v] = d[u] ^ w
+                queue.append(v)
+
+    xor_map = {}
+
+    limit = min(n + 1, 500) 
+    for i in range(1, limit):
+        for j in range(i + 1, n + 1):
+            current_xor = d[i] ^ d[j]
+            
+            if current_xor in xor_map:
+                a, b = xor_map[current_xor]
+
+                if (a, b) != (i, j):
+                    print(f"{a} {b} {i} {j}")
+                    return
+            
+            xor_map[current_xor] = (i, j)
+
+    print("-1")
+
+line_t = input().split()
+if line_t:
+    t = int(line_t[0])
+    for _ in range(t):
+        solve()
 
 
 
