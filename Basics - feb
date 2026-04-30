@@ -2781,7 +2781,59 @@ if line_t:
     for _ in range(t):
         solve()
 
-30/04/26 - 
+30/04/26 - Little Elephant and Exams
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line: return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        tickets = []
+        for _ in range(n):
+            p, a, b = map(int, sys.stdin.readline().split())
+            tickets.append((p / 100.0, a, b))
+
+        if n > 16:
+            print(f"{0.0:.9f}")
+            continue
+
+        memo = {}
+
+        def get_probability(idx, mask):
+
+            if idx == n:
+                return 1.0
+            
+            state = (idx, mask)
+            if state in memo:
+                return memo[state]
+            
+            p, a, b = tickets[idx]
+            res = 0.0
+
+            if not (mask & (1 << (a - 1))):
+                res += p * get_probability(idx + 1, mask | (1 << (a - 1)))
+
+            if not (mask & (1 << (b - 1))):
+                res += (1.0 - p) * get_probability(idx + 1, mask | (1 << (b - 1)))
+                
+            memo[state] = res
+            return res
+
+        result = get_probability(0, 0)
+        print(f"{result:.9f}")
+
+if __name__ == "__main__":
+    solve()
+
+
 
 
 
