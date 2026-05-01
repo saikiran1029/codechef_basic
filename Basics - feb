@@ -2833,7 +2833,45 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-01/05/26 - 
+01/05/26 - Uncle Johny
+
+import sys
+
+def solve():
+
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    ptr = 0
+    t = int(input_data[ptr])
+    ptr += 1
+    
+    results = []
+    for _ in range(t):
+
+        n = int(input_data[ptr])
+        ptr += 1
+
+        playlist = []
+        for i in range(n):
+            playlist.append(int(input_data[ptr]))
+            ptr += 1
+
+        k = int(input_data[ptr])
+        ptr += 1
+
+        target_length = playlist[k-1]
+
+        playlist.sort()
+
+        new_position = playlist.index(target_length) + 1
+        results.append(str(new_position))
+
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
