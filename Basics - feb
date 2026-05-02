@@ -2873,7 +2873,38 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-02/05/26 - 
+02/05/26 - Maximum Alternating Sum
+
+import sys
+
+def solve():
+
+    try:
+        line1 = sys.stdin.readline()
+        if not line1:
+            return
+        n = int(line1.strip())
+
+        line2 = sys.stdin.readline()
+        if not line2:
+            return
+        a = list(map(int, line2.split()))
+
+        a.sort(reverse=True)
+
+        k = (n + 1) // 2
+
+        max_alternating_sum = sum(a[:k]) - sum(a[k:])
+        
+        print(max_alternating_sum)
+    except ValueError:
+        pass
+
+line_t = sys.stdin.readline()
+if line_t:
+    t = int(line_t.strip())
+    for _ in range(t):
+        solve()
 
 
 
