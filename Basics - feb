@@ -2906,7 +2906,25 @@ if line_t:
     for _ in range(t):
         solve()
 
-03/05/26 - 
+03/05/26 - Simple Sorting
+
+import sys
+
+def solve():
+
+    data = sys.stdin.read().split()
+    
+    if not data:
+        return
+
+    numbers = list(map(int, data[1:]))
+
+    numbers.sort()
+
+    sys.stdout.write('\n'.join(map(str, numbers)) + '\n')
+
+if __name__ == "__main__":
+    solve()
 
 
 
