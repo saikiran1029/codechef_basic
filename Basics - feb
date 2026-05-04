@@ -2926,7 +2926,42 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-04/05/26 - 
+04/05/26 - B - Valentine Couples
+
+import sys
+
+
+def solve():
+
+    try:
+        t_line = sys.stdin.readline().strip()
+        if not t_line:
+            return
+        t = int(t_line)
+    except EOFError:
+        return
+
+    for _ in range(t):
+
+        n = int(sys.stdin.readline().strip())
+
+        boys = list(map(int, sys.stdin.readline().split()))
+        girls = list(map(int, sys.stdin.readline().split()))
+
+        boys.sort()
+
+        girls.sort(reverse=True)
+
+        max_likeness = 0
+        for i in range(n):
+            current_likeness = boys[i] + girls[i]
+            if current_likeness > max_likeness:
+                max_likeness = current_likeness
+
+        print(max_likeness)
+
+if __name__ == "__main__":
+    solve()
 
 
 
