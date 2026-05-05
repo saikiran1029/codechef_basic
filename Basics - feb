@@ -2963,7 +2963,40 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-05/05/26 - 
+05/05/26 - The Wave
+
+import sys
+from bisect import bisect_left
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+        
+    N = int(input_data[0])
+    Q = int(input_data[1])
+    roots = sorted(map(int, input_data[2:N+2]))
+
+    queries = map(int, input_data[N+2:])
+    
+    results = []
+    for x in queries:
+
+        idx = bisect_left(roots, x)
+
+        if idx < N and roots[idx] == x:
+            results.append("0")
+        else:
+
+            if (N - idx) % 2 == 0:
+                results.append("POSITIVE")
+            else:
+                results.append("NEGATIVE")
+
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
