@@ -3037,7 +3037,43 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-07/05/26 - 
+07/05/26 - Maximum Value
+
+import sys
+
+def solve():
+
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+        
+    t_cases = int(input_data[0])
+    current_idx = 1
+    
+    for _ in range(t_cases):
+        n = int(input_data[current_idx])
+        current_idx += 1
+
+        arr = []
+        for _ in range(n):
+            arr.append(int(input_data[current_idx]))
+            current_idx += 1
+
+        arr.sort()
+
+        candidates = [
+            arr[-1] * arr[-2] + arr[-1] - arr[-2],
+            arr[-2] * arr[-1] + arr[-2] - arr[-1],
+            arr[0] * arr[1] + arr[0] - arr[1],
+            arr[1] * arr[0] + arr[1] - arr[0],
+            arr[0] * arr[-1] + arr[0] - arr[-1],
+            arr[-1] * arr[0] + arr[-1] - arr[0]
+        ]
+        
+        print(max(candidates))
+
+if __name__ == "__main__":
+    solve()
 
 
 
