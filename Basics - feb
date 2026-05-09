@@ -3118,7 +3118,53 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-09/05/26 - 
+09/05/26 - Chef and the Feast
+
+import sys
+
+def solve():
+
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+
+    T = int(input_data[0])
+    idx = 1
+    
+    results = []
+    for _ in range(T):
+        N = int(input_data[idx])
+        idx += 1
+        A = list(map(int, input_data[idx:idx+N]))
+        idx += N
+
+        pos = [x for x in A if x >= 0]
+        neg = sorted([x for x in A if x < 0], reverse=True)
+        
+        current_sum = sum(pos)
+        current_count = len(pos)
+
+        total_happiness = current_sum * current_count
+
+        remaining_neg_sum = 0
+        for x in neg:
+            new_sum = current_sum + x
+            new_count = current_count + 1
+            
+            if (new_sum * new_count) >= (current_sum * current_count) + x:
+                current_sum = new_sum
+                current_count = new_count
+                total_happiness = current_sum * current_count
+            else:
+
+                remaining_neg_sum += x
+        
+        results.append(str(total_happiness + remaining_neg_sum))
+
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
