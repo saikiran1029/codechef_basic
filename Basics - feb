@@ -3166,7 +3166,49 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-10/05/26 - 
+10/05/26 - pokemon battles
+
+import sys
+
+input = sys.stdin.read
+
+def solve():
+    data = input().split()
+    if not data:
+        return
+    
+    ptr = 0
+    t = int(data[ptr])
+    ptr += 1
+    
+    results = []
+    
+    for _ in range(t):
+        n = int(data[ptr])
+        ptr += 1
+
+        a_powers = list(map(int, data[ptr : ptr + n]))
+        ptr += n
+
+        b_powers = list(map(int, data[ptr : ptr + n]))
+        ptr += n
+
+        trainers = sorted(zip(a_powers, b_powers), key=lambda x: x[0], reverse=True)
+        
+        count = 0
+        max_water_seen = -1
+
+        for _, water_power in trainers:
+            if water_power > max_water_seen:
+                count += 1
+                max_water_seen = water_power
+        
+        results.append(str(count))
+
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
 
 
 
