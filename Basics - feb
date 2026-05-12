@@ -3243,7 +3243,68 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-12/05/26 - 
+12/05/26 - Rock Paper Scissors
+
+import sys
+
+def solve():
+
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        s = sys.stdin.readline().strip()
+
+        result = [None] * n
+
+        beats = {'S': 'R', 'P': 'S', 'R': 'P'}
+
+        result[n-1] = s[n-1]
+
+        next_pos = {'R': s[n-1], 'P': s[n-1], 'S': s[n-1]}
+
+        res_string = [None] * n
+        res_string[n-1] = s[n-1]
+        
+        for i in range(n - 2, -1, -1):
+            current_move = s[i]
+            opponent_move = s[i+1]
+            
+            if current_move == opponent_move:
+                res_string[i] = res_string[i+1]
+            elif beats[current_move] == opponent_move:
+                res_string[i] = res_string[i+1]
+            else:
+
+                target_winning_move = beats[current_move]
+                
+                pass 
+
+        last_seen = {'R': -1, 'P': -1, 'S': -1}
+        ans = [None] * n
+        
+        for i in range(n-1, -1, -1):
+            move = s[i]
+            winning_move = beats[move]
+            
+            idx = last_seen[winning_move]
+            if idx == -1:
+                ans[i] = move
+            else:
+                ans[i] = ans[idx]
+            
+            last_seen[move] = i
+            
+        print("".join(ans))
+
+if __name__ == "__main__":
+    solve()
 
 
 
