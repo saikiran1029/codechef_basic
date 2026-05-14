@@ -3349,7 +3349,52 @@ def solve():
 if __name__ == '__main__':
     solve()
 
-14/05/26 - 
+14/05/26 - Army Training
+
+import sys
+
+def solve():
+
+    input = sys.stdin.read
+    data = input().split()
+    
+    if not data:
+        return
+
+    t = int(data[0])
+    idx = 1
+    
+    out = []
+    for _ in range(t):
+        n = int(data[idx])
+        idx += 1
+
+        a = []
+        for _ in range(n):
+            a.append(int(data[idx]))
+            idx += 1
+
+        a.sort()
+
+        current_attack = sum(a)
+        current_defense = 0
+
+        max_rating = current_attack * current_defense
+
+        for i in range(n):
+            current_attack -= a[i]
+            current_defense += (1000 - a[i])
+
+            current_rating = current_attack * current_defense
+            if current_rating > max_rating:
+                max_rating = current_rating
+                
+        out.append(str(max_rating))
+
+    print('\n'.join(out))
+
+if __name__ == '__main__':
+    solve()
 
 
 
