@@ -3396,7 +3396,42 @@ def solve():
 if __name__ == '__main__':
     solve()
 
-15/05/26 - 
+15/05/26 - Distinct Elements
+
+import sys
+from collections import Counter
+
+def solve():
+    input = sys.stdin.read
+    data = input().split()
+    
+    if not data:
+        return
+    
+    MOD = 10**9 + 7
+
+    T = int(data[0])
+    
+    idx = 1
+    out = []
+    
+    for _ in range(T):
+        N = int(data[idx])
+        A = [int(x) for x in data[idx+1 : idx+1+N]]
+        idx += 1 + N
+        counts = Counter(A)
+
+        ways = 1
+        for freq in counts.values():
+            ways = (ways * (freq + 1)) % MOD
+
+        ans = (ways - 1 + MOD) % MOD
+        out.append(str(ans))
+        
+    print('\n'.join(out))
+
+if __name__ == '__main__':
+    solve()
 
 
 
