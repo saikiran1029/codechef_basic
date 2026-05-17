@@ -3467,7 +3467,49 @@ def solve():
 if __name__ == '__main__':
     solve()
 
-17/05/26 - 
+17/05/26 - One Dimensional Kingdoms
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    iterator = iter(input_data)
+
+    try:
+        t_cases = int(next(iterator))
+    except StopIteration:
+        return
+
+    out = []
+    for _ in range(t_cases):
+        n = int(next(iterator))
+        
+        kingdoms = []
+        for _ in range(n):
+            a = int(next(iterator))
+            b = int(next(iterator))
+            kingdoms.append((a, b))
+
+        kingdoms.sort(key=lambda x: x[1])
+        
+        bombs = 0
+        last_bomb_pos = -1
+        
+        for start, end in kingdoms:
+
+            if start > last_bomb_pos:
+                bombs += 1
+                last_bomb_pos = end  
+                
+        out.append(str(bombs))
+
+    print('\n'.join(out))
+
+if __name__ == '__main__':
+    solve()
 
 
 
