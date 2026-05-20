@@ -3606,7 +3606,41 @@ def main():
 if __name__ == '__main__':
     main()
 
-20/05/26 - 
+20/05/26 - Chef Product
+
+import sys
+import math
+
+def solve():
+    # Read all input from standard input efficiently
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    # First token is the number of test cases
+    T = int(input_data[0])
+    
+    results = []
+    for i in range(1, T + 1):
+        N = int(input_data[i])
+        
+        # Find the maximum possible size k using integer square root
+        max_k = math.isqrt(N)
+        
+        if N % 2 == 0:
+            # If N is even, count even integers from 1 to max_k
+            ans = max_k // 2
+        else:
+            # If N is odd, count odd integers from 1 to max_k
+            ans = (max_k + 1) // 2
+            
+        results.append(str(ans))
+        
+    # Print all results separated by new lines
+    sys.stdout.write('\n'.join(results) + '\n')
+
+if __name__ == '__main__':
+    solve()
 
 
 
