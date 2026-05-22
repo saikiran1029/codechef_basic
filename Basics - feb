@@ -3695,7 +3695,11 @@ def solve():
 if __name__ == '__main__':
     solve()
 
+22/05/26 - New Year Resolution
 
+X = int(input())
+total_pushups = X * 31
+print(total_pushups)
 
 
 
