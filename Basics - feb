@@ -3701,6 +3701,7 @@ X = int(input())
 total_pushups = X * 31
 print(total_pushups)
 
+23/05/26 - 
 
 
 
