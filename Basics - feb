@@ -3701,7 +3701,13 @@ X = int(input())
 total_pushups = X * 31
 print(total_pushups)
 
-23/05/26 - 
+23/05/26 - Popcorn Buying
+
+X = int(input())
+remaining_money = X - 100
+popcorn_buckets = remaining_money // 50
+print(popcorn_buckets)
+
 
 
 
