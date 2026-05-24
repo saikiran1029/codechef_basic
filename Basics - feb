@@ -3710,7 +3710,12 @@ print(popcorn_buckets)
 
 24/05/26 - Protein Diet
 
-
+x, y = map(int, input().split())
+if x >= y:
+    print("YES")
+else:
+    print("NO")
+    
 
 
 
