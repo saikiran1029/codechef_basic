@@ -3718,7 +3718,9 @@ else:
 
 25/02/26 - Selling Sandwiches
 
-
+A, B, C = map(int, input().split())
+profit = A - (B + C)
+print(profit)
 
 
 
