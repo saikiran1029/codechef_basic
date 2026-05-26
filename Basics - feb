@@ -3722,7 +3722,19 @@ A, B, C = map(int, input().split())
 profit = A - (B + C)
 print(profit)
 
-26/05/26 - 
+26/05/26 - Problems in your to-do list
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    ratings = list(map(int, input().split()))
+    to_remove = 0
+    for r in ratings:
+        if r >= 1000:
+            to_remove += 1
+            
+    print(to_remove)
+
 
 
 
