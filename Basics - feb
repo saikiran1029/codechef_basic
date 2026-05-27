@@ -3735,7 +3735,45 @@ for _ in range(t):
             
     print(to_remove)
 
-27/05/26 - 
+27/05/26 - Mighty Friend
+
+import sys
+
+def solve():
+    try:
+        line1 = sys.stdin.readline()
+        if not line1: return
+        t = int(line1.strip())
+    except EOFError:
+        return
+
+    for _ in range(t):
+        n, k = map(int, sys.stdin.readline().split())
+        a = list(map(int, sys.stdin.readline().split()))
+        motu_elements = a[0::2]
+        tomu_elements = a[1::2]
+
+        motu_elements.sort(reverse=True)
+        tomu_elements.sort()
+
+        swaps = min(k, len(motu_elements), len(tomu_elements))
+        for i in range(swaps):
+            if motu_elements[i] > tomu_elements[i]:
+                motu_elements[i], tomu_elements[i] = tomu_elements[i], motu_elements[i]
+            else:
+                break
+
+        motu_score = sum(motu_elements)
+        tomu_score = sum(tomu_elements)
+
+        if tomu_score > motu_score:
+            print("YES")
+        else:
+            print("NO")
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
