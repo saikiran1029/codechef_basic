@@ -3774,7 +3774,38 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-29/05/26 - 
+29/05/26 - Warrior Chef
+
+import sys
+
+def solve():
+    try:
+        line1 = sys.stdin.readline()
+        if not line1: return
+        t = int(line1.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        n, h = map(int, sys.stdin.readline().split())
+        a = list(map(int, sys.stdin.readline().split()))
+        a.sort(reverse=True)
+        
+        current_h = h
+        min_x = 0
+
+        for i in range(n):
+            if current_h > a[i]:
+                current_h -= a[i]
+            else:
+                min_x = a[i]
+                break
+        
+        print(min_x)
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
