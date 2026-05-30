@@ -3806,7 +3806,70 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-30/05/26 - 
+30/05/26 - Minions and Voting
+
+import sys
+import bisect
+
+def solve():
+    input = sys.stdin.read
+    data = input().split()
+    
+    if not data:
+        return
+    
+    T = int(data[0])
+    idx = 1
+    
+    out = []
+    for _ in range(T):
+        N = int(data[idx])
+        S = [int(x) for x in data[idx+1 : idx+1+N]]
+        idx += 1 + N
+
+        pref = [0] * (N + 1)
+        for i in range(N):
+            pref[i+1] = pref[i] + S[i]
+
+        diff = [0] * (N + 2)
+        
+        for j in range(N):
+            val = S[j]
+
+            target_left = pref[j] - val
+
+            k_left = bisect.bisect_left(pref, target_left)
+            left_bound = max(0, k_left - 1)
+            right_bound = j - 1
+            
+            if left_bound <= right_bound:
+                diff[left_bound] += 1
+                diff[right_bound + 1] -= 1
+
+            target_right = pref[j+1] + val
+
+            k_right = bisect.bisect_right(pref, target_right)
+
+            left_bound = j + 1
+            right_bound = min(N - 1, k_right - 1)
+            
+            if left_bound <= right_bound:
+                diff[left_bound] += 1
+                diff[right_bound + 1] -= 1
+
+        votes = [0] * N
+        current_votes = 0
+        for i in range(N):
+            current_votes += diff[i]
+            votes[i] = current_votes
+            
+        out.append(" ".join(map(str, votes)))
+        
+    print("\n".join(out))
+
+if __name__ == '__main__':
+    solve()
+
 
 
 
