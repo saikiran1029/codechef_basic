@@ -3881,7 +3881,20 @@ for _ in range(t):
     ltime108_count = codes.count("LTIME108")
     print(f"{start38_count} {ltime108_count}")
 
-3/06/26 - 
+3/06/26 - The Block Game
+
+try:
+    t = int(input())
+    
+    for _ in range(t):
+        n = input().strip()
+        if n == n[::-1]:
+            print("wins")
+        else:
+            print("loses")
+except EOFError:
+    pass
+
 
 
 
