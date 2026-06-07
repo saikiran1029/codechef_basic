@@ -3953,7 +3953,45 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-7/6/26 - 
+7/6/26 - Reversing directions
+
+def reverse_directions():
+    try:
+        t_str = input().strip()
+        if not t_str: return
+        t = int(t_str)
+        
+        for _ in range(t):
+            n = int(input().strip())
+            original_directions = []
+            for _ in range(n):
+                original_directions.append(input().strip())
+            parsed = []
+            for line in original_directions:
+                parts = line.split(" on ")
+                parsed.append((parts[0], parts[1]))
+            
+            reversed_output = []
+            reversed_output.append(f"Begin on {parsed[-1][1]}")
+
+            for i in range(len(parsed) - 1, 0, -1):
+
+                old_turn = parsed[i][0]
+                new_turn = "Right" if old_turn == "Left" else "Left"
+
+                street = parsed[i-1][1]
+                reversed_output.append(f"{new_turn} on {street}")
+            
+            for line in reversed_output:
+                print(line)
+            print()
+            
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    reverse_directions()
+
 
 
 
