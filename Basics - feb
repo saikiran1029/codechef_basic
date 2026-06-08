@@ -3992,7 +3992,25 @@ def reverse_directions():
 if __name__ == "__main__":
     reverse_directions()
 
-08/06/26 - 
+08/06/26 - Prime Reversal
+
+def solve():
+    try:
+        n = int(input())
+        a = input().strip()
+        b = input().strip()
+    except EOFError:
+        return
+    if a.count('1') == b.count('1'):
+        print("YES")
+    else:
+        print("NO")
+t_str = input().strip()
+if t_str:
+    t = int(t_str)
+    for _ in range(t):
+        solve()
+
 
 
 
