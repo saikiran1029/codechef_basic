@@ -4011,7 +4011,37 @@ if t_str:
     for _ in range(t):
         solve()
 
-10/06/26 - 
+10/06/26 - Difficulty Rating Order
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        difficulties = list(map(int, sys.stdin.readline().split()))
+        
+        is_non_decreasing = True
+        for i in range(n - 1):
+            if difficulties[i] > difficulties[i + 1]:
+                is_non_decreasing = False
+                break
+        
+        if is_non_decreasing:
+            print("Yes")
+        else:
+            print("No")
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
