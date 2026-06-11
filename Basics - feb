@@ -4042,7 +4042,36 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-11/06/26 - 
+11/06/26 - Making a Meal
+
+import sys
+
+def solve():
+    line = sys.stdin.readline()
+    if not line: return
+    t = int(line.strip())
+    
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        counts = {'c': 0, 'o': 0, 'd': 0, 'e': 0, 'h': 0, 'f': 0}
+        
+        for _ in range(n):
+            s = sys.stdin.readline().strip()
+            for char in s:
+                if char in counts:
+                    counts[char] += 1
+        ans = min(
+            counts['c'] // 2,
+            counts['e'] // 2,
+            counts['o'],
+            counts['d'],
+            counts['h'],
+            counts['f']
+        )
+        print(ans)
+
+solve()
+
 
 
 
