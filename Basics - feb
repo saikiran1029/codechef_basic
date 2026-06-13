@@ -4072,7 +4072,33 @@ def solve():
 
 solve()
 
-13/06/26 - 
+13/06/26 - Different String
+
+def solve():
+    import sys
+    input = sys.stdin.read().split()
+    idx = 0
+    T = int(input[idx])
+    idx += 1
+    
+    results = []
+    for _ in range(T):
+        N = int(input[idx])
+        idx += 1
+        
+        res = ""
+        for i in range(N):
+            s = input[idx]
+            idx += 1
+            res += '1' if s[i] == '0' else '0'
+        
+        results.append(res)
+    
+    print("\n".join(results))
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
