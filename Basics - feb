@@ -4179,7 +4179,45 @@ def solve():
 if __name__ == '__main__':
     solve()
 
-16/06/26 - 
+16/06/26 - Suspense String
+
+from collections import deque
+
+def solve():
+    try:
+        line1 = input().split()
+        if not line1: return
+        t = int(line1[0])
+        for _ in range(t):
+            n = int(input())
+            s = input().strip()
+            
+            res = deque()
+            left = 0
+            right = n - 1
+            
+            while left <= right:
+                if s[left] == '0':
+                    res.appendleft('0')
+                else:
+                    res.append('1')
+                left += 1
+                
+                if left > right:
+                    break
+                if s[right] == '0':
+                    res.append('0')
+                else:
+                    res.appendleft('1')
+                right -= 1
+                
+            print("".join(res))
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
