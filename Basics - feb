@@ -4219,7 +4219,47 @@ if __name__ == "__main__":
     solve()
 
 
-17/06/26 - 
+17/06/26 - Superheroes and villains
+
+import sys
+
+def solve():
+    line = sys.stdin.readline()
+    if not line:
+        return
+    t = int(line.strip())
+
+    for _ in range(t):
+        line = sys.stdin.readline()
+        if not line:
+            break
+        n = int(line.strip())
+
+        s_count = 1
+        v_count = 1
+        result = "draw"
+        finished = False
+
+        for _ in range(n):
+            name = sys.stdin.readline().strip()
+            
+            if not finished:
+                if name.endswith("man") or name.endswith("woman"):
+                    s_count += 1
+                else:
+                    v_count += 1
+                if s_count - v_count >= 2:
+                    result = "superheroes"
+                    finished = True
+                elif v_count - s_count >= 3:
+                    result = "villains"
+                    finished = True
+        
+        print(result)
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
