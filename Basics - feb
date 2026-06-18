@@ -4260,7 +4260,51 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-18/06/26 - 
+18/06/26 - Chef and Meetings
+
+# cook your dish here
+def to_24hr_minutes(time_str):
+    time, period = time_str[:-3], time_str[-2:]
+    hh, mm = map(int, time.split(':'))
+    
+    if period == "AM":
+        if hh == 12: hh = 0
+    else: # PM
+        if hh != 12: hh += 12
+        
+    return hh * 60 + mm
+
+import sys
+input = sys.stdin.read
+data = input().splitlines()
+
+T = int(data[0])
+line_idx = 1
+
+for _ in range(T):
+    P_str = data[line_idx]
+    P = to_24hr_minutes(P_str)
+    N = int(data[line_idx + 1])
+    line_idx += 2
+    
+    result = []
+    for _ in range(N):
+        LR_str = data[line_idx]
+        L_str = LR_str[:8]
+        R_str = LR_str[9:]
+        
+        L = to_24hr_minutes(L_str)
+        R = to_24hr_minutes(R_str)
+        
+        if L <= P <= R:
+            result.append('1')
+        else:
+            result.append('0')
+        line_idx += 1
+        
+    print("".join(result))
+
+
 
 
 
