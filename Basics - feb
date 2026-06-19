@@ -4304,7 +4304,38 @@ for _ in range(T):
         
     print("".join(result))
 
-19/06/26 - 
+19/06/26 - Compress the Video
+
+# cook your dish here
+import sys
+
+def solve():
+    # Read number of test cases
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+    except ValueError:
+        return
+
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        a = list(map(int, sys.stdin.readline().split()))
+        
+        if n == 0:
+            print(0)
+            continue
+        count = 1
+        for i in range(1, n):
+            if a[i] != a[i-1]:
+                count += 1
+        
+        print(count)
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
