@@ -4336,7 +4336,29 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-20/06/26 - 
+20/06/26 - Cool Name
+
+def solve():
+    import sys
+    input = sys.stdin.read().split()
+    
+    if not input:
+        return
+        
+    T = int(input[0])
+    results = []
+    
+    for i in range(1, T + 1):
+        name = input[i]
+        values = sorted([ord(char) - ord('a') + 1 for char in name])
+        power = sum((idx + 1) * val for idx, val in enumerate(values))
+        results.append(str(power))
+    
+    sys.stdout.write("\n".join(results) + "\n")
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
