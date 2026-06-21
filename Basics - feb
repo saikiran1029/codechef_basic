@@ -4359,7 +4359,42 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-21/06/26 - 
+21/06/26 - Chef and Pick Digit
+
+import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data:
+        return
+    
+    T = int(input_data[0])
+    idx = 1
+    
+    for _ in range(T):
+        N_str = input_data[idx]
+        idx += 1
+        freq = [0] * 10
+        for digit in N_str:
+            freq[int(digit)] += 1
+            
+        result = []
+        for char_code in range(65, 91):
+            d1 = char_code // 10
+            d2 = char_code % 10
+            
+            if d1 == d2:
+                if freq[d1] >= 2:
+                    result.append(chr(char_code))
+            else:
+                if freq[d1] >= 1 and freq[d2] >= 1:
+                    result.append(chr(char_code))
+        
+        print("".join(result))
+
+if __name__ == "__main__":
+    solve()
+
 
 
 
