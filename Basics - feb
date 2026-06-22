@@ -4395,7 +4395,25 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-22/06/26 - 
+22/06/26 - Yet another subarray problem
+
+import sys
+
+def solve():
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        t = int(line.strip())
+        for _ in range(t):
+            n = int(sys.stdin.readline().strip())
+            result = [1 + (i * 2) for i in range(n)]
+            print(*(result))
+    except EOFError:
+        pass
+
+if __name__ == "__main__":
+    solve()
 
 
 
