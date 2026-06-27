@@ -4415,7 +4415,20 @@ def solve():
 if __name__ == "__main__":
     solve()
 
-27/06/26 - 
+27/06/26 - Palindromic substrings
+
+def solve():
+    A = input().strip()
+    B = input().strip()
+    if set(A) & set(B):
+        print("Yes")
+    else:
+        print("No")
+
+T = int(input())
+for _ in range(T):
+    solve()
+
 
 
 
